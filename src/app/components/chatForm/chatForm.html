@@ -1,6 +1,22 @@
 <div>
     <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
+
+        <!--hier wird die frage eingegeben-->
+        <!--todo michael-->
         <input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">
+
+        <!--das ist der abschicken button-->
+        <!--todo david: was hübsches von twitter auswählen-->
         <button type="submit">Senden</button>
+
+        <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
+        <div id="wait">
+
+        </div>
+            <!--todo david-->
+        <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
+        <div id="answered">
+            <!--todo david-->
+        </div>
     </form>
 </div>
