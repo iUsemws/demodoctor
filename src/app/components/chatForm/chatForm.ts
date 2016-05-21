@@ -11,6 +11,8 @@ export class ChatFormComponent {
     public hasAsked:boolean;
     public questionAnswered:boolean;
     public answer:string;
+    
+    private questionId: string;
 
     constructor(private _chatService:ChatService) {
 
@@ -29,12 +31,12 @@ export class ChatFormComponent {
     }
 
     public periodicRefresh() {
+        
+        console.log("asking for " + this.questionId);
 
-        var questionId = localStorage.getItem('questionId');
+        if (this.questionId !== "undefined" && !this.questionAnswered) {
 
-        if (questionId !== 'undefined') {
-
-            this._chatService.getAnswer(questionId)
+            this._chatService.getAnswer(this.questionId)
                 .subscribe(data => this.handleAnswerResponse(data),
                     err => {
                         // todo: suppress error in console?
@@ -49,28 +51,16 @@ export class ChatFormComponent {
         setTimeout(() => this.periodicRefresh(), 2000);
     }
 
-    private handleWaitData(data) {
-        console.log(data);
-
-        this.questionAnswered = true;
-    }
-
-    private handleWaitErr(err) {
-        console.log(err);
-    }
 
     private handleData(data) {
         this.answer = "Die Anfrage wird verschickt.";
 
         var body = JSON.parse(data._body);
-        var questionId = body.questionId;
-
-        console.log(questionId);
-
-        localStorage.setItem('questionId', questionId);
+        this.questionId = body.questionId;
 
         // disable another question; todo: replace this multi question behavior
         this.hasAsked = true;
+        this.questionAnswered = false;
     }
 
     private handleErr(err) {
@@ -83,7 +73,6 @@ export class ChatFormComponent {
             return;
         }
 
-        this.questionAnswered = false;
         this._chatService.ask(this.text)
             .subscribe(
                 data => this.handleData(data),
