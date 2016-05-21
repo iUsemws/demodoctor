@@ -6,13 +6,13 @@ import {ChatService} from '../../services/chatService';
     templateUrl: 'app/components/chatForm/chatForm.html'
 })
 export class ChatFormComponent {
-    public text: string;
+    public text:string;
 
-    public hasAsked: boolean;
-    public questionAnswered: boolean;
-    public answer: string;
+    public hasAsked:boolean;
+    public questionAnswered:boolean;
+    public answer:string;
 
-    constructor(private _chatService: ChatService) {
+    constructor(private _chatService:ChatService) {
 
         // todo: remove before commit
         localStorage.setItem('questionId', undefined);
@@ -23,6 +23,11 @@ export class ChatFormComponent {
         this.periodicRefresh();
     }
 
+    private handleAnswerResponse(data) {
+        this.answer = JSON.parse(data._body).answer;
+        this.questionAnswered = true;
+    }
+
     public periodicRefresh() {
 
         var questionId = localStorage.getItem('questionId');
@@ -30,19 +35,16 @@ export class ChatFormComponent {
         if (questionId !== 'undefined') {
 
             this._chatService.getAnswer(questionId)
-                .subscribe(data => {
-                    console.log(data);
-                    this.questionAnswered = true;
-                },
-                err => {
-                    // todo: suppress error in console?
-                    if (err.status == 400) {
-                        this.answer = "Die Anfrage wird bearbeitet.";
-                        this.questionAnswered = false;
-                    } else {
-                        this.answer = "Something bad happened.";
-                    }
-                });
+                .subscribe(data => this.handleAnswerResponse(data),
+                    err => {
+                        // todo: suppress error in console?
+                        if (err.status == 400) {
+                            this.answer = "Die Anfrage wird bearbeitet.";
+                            this.questionAnswered = false;
+                        } else {
+                            this.answer = "Something bad happened.";
+                        }
+                    });
         }
         setTimeout(() => this.periodicRefresh(), 2000);
     }
@@ -56,7 +58,7 @@ export class ChatFormComponent {
     private handleWaitErr(err) {
         console.log(err);
     }
-    
+
     private handleData(data) {
         this.answer = "Die Anfrage wird verschickt.";
 
@@ -70,12 +72,12 @@ export class ChatFormComponent {
         // disable another question; todo: replace this multi question behavior
         this.hasAsked = true;
     }
-    
+
     private handleErr(err) {
         this.answer = "Es ist ein Fehler aufgetreten :(";
         console.log(err);
     }
-    
+
     public formSubmitted() {
         if (!this.text) {
             return;
