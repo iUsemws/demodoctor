@@ -2,7 +2,6 @@
     <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
 
         <!--hier wird die frage eingegeben-->
-        <!--todo michael-->
         <!--<input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">-->
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
@@ -13,14 +12,17 @@
         </div>
 
 
-        <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
-        <div id="wait">
-
-        </div>
-        <!--todo david-->
-        <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
-        <div id="answered">
+        <div id="responseWrapper" style="font-weight: bold">
+            <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
+            <div id="wait" *ngIf="true">
+                Laden ...
+            </div>
             <!--todo david-->
+            <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
+            <div id="answered" *ngIf="false">
+                <!--todo david-->
+                Die Antwort ist : Hans.
+            </div>
         </div>
     </form>
 </div>
