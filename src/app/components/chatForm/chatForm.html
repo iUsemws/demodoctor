@@ -3,17 +3,21 @@
 
         <!--hier wird die frage eingegeben-->
         <!--todo michael-->
-        <input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">
+        <!--<input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">-->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <!--das ist der abschicken button-->
+                <button class="btn btn-default" type="button">Senden!</button>
+              </span>
+        </div>
 
-        <!--das ist der abschicken button-->
-        <!--todo david: was hübsches von twitter auswählen-->
-        <button type="submit">Senden</button>
 
         <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
         <div id="wait">
 
         </div>
-            <!--todo david-->
+        <!--todo david-->
         <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
         <div id="answered">
             <!--todo david-->
