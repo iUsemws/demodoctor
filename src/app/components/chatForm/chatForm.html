@@ -2,9 +2,8 @@
     <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
 
         <!--hier wird die frage eingegeben-->
-        <!--<input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">-->
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="form-control" placeholder="Search for..."/>
               <span class="input-group-btn">
                 <!--das ist der abschicken button-->
                 <button class="btn btn-default" type="button">Senden!</button>
@@ -15,7 +14,8 @@
         <div id="responseWrapper" style="font-weight: bold">
             <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
             <div id="wait" *ngIf="true">
-                Laden ...
+                Antwortet
+                ...
             </div>
             <!--todo david-->
             <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
