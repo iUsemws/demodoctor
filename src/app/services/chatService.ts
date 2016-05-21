@@ -35,10 +35,19 @@ export class ChatService {
             });
     }
 
-    public post(message):Observable<Response> {
-        const userId = this._userService.id;
+    public ask(message):Observable<Response> {
 
-        return this._http.post(`${this._baseApi}message/${userId}`, JSON.stringify(message), {
+        var obj = {
+            trigger: message
+        };
+
+        return this._http.post(`${this._baseApi}find`, JSON.stringify(obj), {
+            headers: this.createHeaders()
+        });
+    }
+
+    public getAnswer(questionId):Observable<Response> {
+        return this._http.post(`${this._baseApi}find/` + questionId, "", {
             headers: this.createHeaders()
         });
     }
