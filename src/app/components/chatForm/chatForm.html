@@ -1,0 +1,6 @@
+<div>
+    <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
+        <input title="Text" type="text" placeholder="Bitte Nachricht eingeben..." [(ngModel)]="text">
+        <button type="submit">Senden</button>
+    </form>
+</div>

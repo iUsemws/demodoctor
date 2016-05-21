@@ -1,0 +1,23 @@
+.myContainer {
+    display: flex;
+    felx-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100vw;
+    height: 80vh;
+}
+
+.myLeftContainer,.myRightContainer {
+    width: 45vw;
+    margin: 5vh 5vw;
+}
+
+.myLeftContainer {
+    order: 1;
+    border: 1px red solid;
+}
+
+.myRightContainer {
+    border: 1px blue solid;
+    order: 2;
+}
