@@ -1,26 +1,28 @@
-<div style="width:100%">
-    <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
+<div>
+    <!--<div class="col-md-12">-->
+        <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
 
-        <!--hier wird die frage eingegeben-->
-        <textarea class="form-control" rows="5" placeholder="Wie können wir Ihnen helfen?" required
-                  [(ngModel)]="text"></textarea>
-        <span class="input-group-btn">
-                <!--das ist der abschicken button-->
+            <!--hier wird die frage eingegeben-->
+            <textarea class="form-control" rows="5" placeholder="Wie können wir Ihnen helfen?" required
+                      [(ngModel)]="text"></textarea>
+
+            <br/>
+            <!--das ist der abschicken button-->
             <button class="btn btn-primary" type="submit" [disabled]="hasAsked">Abschicken!</button>
-        </span>
 
-    </form>
+        </form>
 
-    <div id="responseWrapper" style="font-weight: bold">
-        <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
-        <div id="wait" *ngIf="!questionAnswered">
-            {{ answer }}
-        </div>
-        <!--todo david-->
-        <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
-        <div id="answered" *ngIf="questionAnswered">
+        <div id="responseWrapper" style="font-weight: bold">
+            <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
+            <div id="wait" *ngIf="!questionAnswered">
+                {{ answer }}
+            </div>
             <!--todo david-->
-            {{ answer }}
+            <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
+            <div id="answered" *ngIf="questionAnswered">
+                <!--todo david-->
+                {{ answer }}
+            </div>
         </div>
-    </div>
+    <!--</div>-->
 </div>
