@@ -7,7 +7,7 @@
     height: 80vh;
 }
 
-.myLeftContainer,.myRightContainer {
+.myLeftContainer, .myRightContainer {
     width: 45vw;
     margin: 5vh 5vw;
 }
@@ -20,4 +20,18 @@
 .myRightContainer {
     border: 1px blue solid;
     order: 2;
+}
+
+.doc-pic {
+    /*background-size: contain;*/
+    /*background: url('../img/docPic.jpg') no-repeat center;*/
+
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-color: #f8f8f8;
+    background-image: url('../img/docPic.jpg');
+    /*background-size: cover;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
