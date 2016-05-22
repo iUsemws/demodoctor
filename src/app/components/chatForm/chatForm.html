@@ -14,11 +14,11 @@
 
         <div id="responseWrapper" style="font-weight: bold">
             <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
-            <div id="wait" *ngIf="!questionAnswered">
+            <div id="wait" *ngIf="!questionAnswered && answer">
                 {{ answer }}
             </div>
             <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
-            <div id="answered" *ngIf="questionAnswered">
+            <div id="answered" *ngIf="questionAnswered && answer">
                 {{ answer }}
             </div>
         </div>
