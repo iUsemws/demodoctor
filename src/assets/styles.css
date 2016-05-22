@@ -39,4 +39,10 @@
 .entry {
     margin: 15px 0 35px;
 }
+
+#answered {
+    font-size: 16px;
+    background-color: #eeffee;
+    padding: 10px;
+    margin: 25px 0;
 }
