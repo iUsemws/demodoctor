@@ -3,12 +3,12 @@
         <form #inputForm="ngForm" (ngSubmit)="formSubmitted()">
 
             <!--hier wird die frage eingegeben-->
-            <textarea class="form-control" rows="5" placeholder="Wie können wir Ihnen helfen?" required
+            <textarea class="form-control" rows="5" placeholder="Please insert your question to our team..." required
                       [(ngModel)]="text"></textarea>
 
             <br/>
             <!--das ist der abschicken button-->
-            <button class="btn btn-primary" type="submit" [disabled]="hasAsked">Abschicken!</button>
+            <button class="btn btn-primary" type="submit" [disabled]="hasAsked">Submit your question!</button>
 
         </form>
 
