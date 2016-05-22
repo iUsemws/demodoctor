@@ -12,9 +12,9 @@
 
         </form>
 
-        <div id="responseWrapper" style="font-weight: bold">
+        <div id="responseWrapper">
             <!--wenn die frage abgeschickt wurde, läuft eine warte-animation-->
-            <div id="wait" *ngIf="!questionAnswered && answer">
+            <div id="wait" *ngIf="!questionAnswered && answer" style="font-weight: bold">
                 {{ answer }}
             </div>
             <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
