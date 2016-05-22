@@ -55,6 +55,7 @@ export class ChatFormComponent {
         this.questionId = body.questionId;
 
         // disable another question; todo: replace this multi question behavior
+        this.answer = "";
         this.hasAsked = true;
         this.questionAnswered = false;
     }
