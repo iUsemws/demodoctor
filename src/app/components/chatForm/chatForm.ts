@@ -26,6 +26,7 @@ export class ChatFormComponent {
         this.answer = JSON.parse(data._body).answer;
         this.questionAnswered = true;
         this.text = "";
+        this.hasAsked = false;
     }
 
     public periodicRefresh() {
