@@ -18,7 +18,7 @@
                 {{ answer }}
             </div>
             <!--wenn die frage angekommen ist, wird die warteanimation durch den text ersetzt-->
-            <div id="answered" *ngIf="questionAnswered && answer" inner-html = "{{ answer }}">
+            <div id="answered" *ngIf="questionAnswered && answer" [innerHTML]="answer">
             </div>
         </div>
     <!--</div>-->
