@@ -11,8 +11,8 @@ export class ChatFormComponent {
     public hasAsked:boolean;
     public questionAnswered:boolean;
     public answer:string;
-    
-    private questionId: string;
+
+    private questionId:string;
 
     constructor(private _chatService:ChatService) {
 
@@ -31,11 +31,7 @@ export class ChatFormComponent {
     }
 
     public periodicRefresh() {
-        
-        console.log("asking for " + this.questionId);
-
         if (this.questionId !== "undefined" && !this.questionAnswered) {
-
             this._chatService.getAnswer(this.questionId)
                 .subscribe(data => this.handleAnswerResponse(data),
                     err => {
