@@ -16,9 +16,6 @@ export class ChatFormComponent {
 
     constructor(private _chatService:ChatService) {
 
-        // todo: remove before commit
-        localStorage.setItem('questionId', undefined);
-
         this.questionAnswered = false;
         this.hasAsked = false;
 
@@ -38,7 +35,7 @@ export class ChatFormComponent {
                     err => {
                         // todo: suppress error in console?
                         if (err.status == 400) {
-                            this.answer = "Die Anfrage wird bearbeitet.";
+                            this.answer = "We are processing your question.";
                             this.questionAnswered = false;
                         } else {
                             this.answer = "Something bad happened.";
@@ -50,7 +47,7 @@ export class ChatFormComponent {
 
 
     private handleData(data) {
-        this.answer = "Die Anfrage wird verschickt.";
+        this.answer = "Your question was sent.";
 
         var body = JSON.parse(data._body);
         this.questionId = body.questionId;
@@ -62,7 +59,7 @@ export class ChatFormComponent {
     }
 
     private handleErr(err) {
-        this.answer = "Es ist ein Fehler aufgetreten :(";
+        this.answer = "Oh noes, our hamsters died :(";
         console.log(err);
     }
 
